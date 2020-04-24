@@ -12,5 +12,8 @@ AWS Profile과 Terraform CLI가 설치된 Local 환경에서 variable 파일 수
 - EC2
 - RDS
 - S3
-- Elastic Beanstalk
+- Fargate*
 - SQS
+
+----
+*custom module
