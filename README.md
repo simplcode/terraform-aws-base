@@ -1,4 +1,4 @@
-# Terraform base template(Draft)
+# Terraform AWS base template(Draft)
 
 Terraform으로 AWS인프라 구축시 마다 기본적으로 사용되는 리소스들을 Terraform registry 중 Hashicorp 공인 파트너사에서 제공하는 모듈로 정의, IaC 프로젝트를 위한 탬플릿으로 활용하고자 합니다. 다만, 공식 모듈이 존재하지 않거나 프로젝트에 적합하지 않은 경우 직접 정의한 모듈을 사용합니다.
 
@@ -12,7 +12,6 @@ AWS Profile과 Terraform CLI가 설치된 Local 환경에서 variable 파일 수
 - RDS
 - S3
 - SQS
-- Fargate*
 
 ----
 *custom module
