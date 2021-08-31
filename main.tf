@@ -19,7 +19,8 @@ module "vpc" {
   version = ">= 3.6.0"
 
   cidr = var.vpc-cidr
-  azs = [for i, v in data.aws_availability_zones.available.names[*] : v if i < length(var.public-subnets)]
+  azs = data.aws_availability_zones.available.names[*]
+  //azs = [for i, v in data.aws_availability_zones.available.names[*] : v if i < length(var.public-subnets)]
   public_subnets  = var.public-subnets
   private_subnets = var.private-subnets
 
