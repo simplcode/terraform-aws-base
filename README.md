@@ -1,18 +1,38 @@
-# Terraform configuration template (Draft)
+# Terraform configuration template
 
-Terraform으로 AWS인프라 구축시 마다 반복해서 사용되던 리소스들을 Terraform registry 중 Hashicorp 공인 파트너사에서 제공하는 모듈로 정의, IaC 프로젝트를 위한 탬플릿으로 활용하고자 합니다. 공식 모듈이 존재하지 않거나 프로젝트에 적합하지 않은 경우 직접 정의한 모듈을 사용합니다.
+This configuration template creates set of VPC resources across multiple AZs.
 
-## 범위
-AWS Profile과 Terraform CLI가 설치된 Local 환경에서 variable 파일 수정만으로 사용할 수 있도록 단순하게 구성. 추가 설정이 필요한 Github Action, Terraform cloud 또는 atlantis, packer등을 사용한 구성은 따로 작성.
+As you define public/private subnets, configuration will coordinate an AZ per each subnet. Determine you are using a region with sufficient number of AZs. 
 
-### 모듈
-- Network 관련(VPC, Security Group, Routing Table,... etc.)
-- Route53
-- EC2
-- RDS
-- S3
-- SQS
-- Fargate*
+## Template Configuration will Create
+- VPC with CIDR: 10.0.0.0/16
+- 3 Public/Private Subnets
+- NAT per private subnet
+- Subnet per each AZs
+- Security Groups with predefined rules [http, https, ssh]
 
-----
-*custom module
+## Requirements
+| Name | Version |
+|------|---------|
+| Terraform |    >= 1.0.5 |
+| AWS CLI |  |
+
+## Provider & Modules
+AWS Version(>= 3.56)
+
+| Module | Version |
+|--------|---------|
+| VPC |    >= 3.6.0 |
+| Security Group |    >= 4.3 |
+
+
+## Usage
+Specify VPC CIDR and subnets along with region, etc. in terraform.tfvars.
+
+Execute following commands: 
+```bash
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
+
