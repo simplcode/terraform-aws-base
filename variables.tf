@@ -28,17 +28,17 @@ variable "vpc-cidr" {
 
 variable "public-subnets" {
   description = ""
-  type = list(string)
+  type        = list(string)
 }
 
 variable "private-subnets" {
   description = ""
-  type = list(string)
+  type        = list(string)
 }
 
 variable "tags" {
   description = "global tags. It'll be merged with modules' tags"
-  type = map(string)
+  type        = map(string)
 }
 
 
