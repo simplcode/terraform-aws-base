@@ -16,7 +16,7 @@ https://registry.terraform.io/modules/terraform-aws-modules/vpc/aws
 */
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = ">= 3.6.0"
+  version = "~> 3.11"
 
   cidr = var.vpc-cidr
   azs = data.aws_availability_zones.available.names[*]
@@ -39,7 +39,7 @@ https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws
 */
 module "security_group" {
   source = "./security-group"
-  ver    = ">= 4.3"
+  ver    = "~> 4.7"
 
   vpc_id      = module.vpc.vpc_id
   cidr_blocks = [var.vpc-cidr]
